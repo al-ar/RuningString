@@ -5,6 +5,7 @@ from django.shortcuts import render
 from .video import create_video
 from .forms import TextForm
 from .models import *
+from transliterate import translit
 
 LIMIT_LAST_TEXT = 5
 
@@ -13,10 +14,12 @@ def home(request):
 
     if request.method == 'POST':
         form = TextForm(request.POST)
+
         if form.is_valid():
             form.save()
             create_video(request.POST['text'])
-            return download_file(request, request.POST['text'])
+            text_file = translit(request.POST['text'], language_code='ru', reversed=True)
+            return download_file(request, text_file)
     else:
         form = TextForm()
 
