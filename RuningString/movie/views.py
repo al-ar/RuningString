@@ -33,6 +33,7 @@ def last_files(request):
 
 
 def download_file(request, filepath):
+    filepath = translit(filepath, language_code='ru', reversed=True)
     fl_path = '../tempVideo/' + filepath + '.mp4'
     filename = filepath + '.mp4'
     fl = open(fl_path, 'rb')
