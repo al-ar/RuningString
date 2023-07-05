@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Последние файлы</title>
+</head>
+<body>
+<h1> Последние Записи </h1>
+
+    {% for t in last_text %}
+             <article>
+                <ul>
+                  <li>
+                   <a href="{% url 'movie:download_file' filepath=t.text%}">{{ t.text }}: {{ t.pub_date }}</a>
+                    {{ t.text }}: {{ t.pub_date }}
+                  </li>
+                </ul>
+              </article>
+    {% endfor %}
+
+</body>
+</html>
