@@ -29,5 +29,5 @@ python3 manage.py migrate
 
 python3 manage.py runserver
 
-
+Примеп работы: http://aleksandrov81.pythonanywhere.com/
 автор: Александров Артем
