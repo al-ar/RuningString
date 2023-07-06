@@ -11,8 +11,9 @@ FPS = 25
 def create_video(text):
     upper = sum(1 for c in text if c.isupper())
     lower = sum(1 for c in text if c.islower())
-    alpha = sum(1 for c in text if not c.isalpha())
-    coef_len = (upper*1.5+lower*1.1+alpha*0.6)/len(text)
+    alpha = sum(1 for c in text if not c.isalnum())
+    digit = sum(1 for c in text if c.isdigit())
+    coef_len = (upper*1.5+lower*1.1+alpha*0.6 + digit*1.2)/len(text)
     speed = coef_len * len(text) /VIDEO_DURATION
     symbol = W - FONT_SIZE
     txtClip = TextClip(text, color='black', font="TimesNewRoman",
